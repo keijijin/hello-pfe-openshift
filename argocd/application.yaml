@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: hello-pfe-openshift
+  namespace: pfe-lab
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/keijijin/hello-pfe-openshift.git
+    targetRevision: main
+    path: deploy
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: hello-pfe-openshift
+  syncPolicy:
+    automated: { prune: true, selfHeal: true }
+    syncOptions: [CreateNamespace=true]
+    managedNamespaceMetadata:
+      labels:
+        pfe-lab/guardrails: enabled

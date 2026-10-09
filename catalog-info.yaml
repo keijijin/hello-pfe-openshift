@@ -1,0 +1,12 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: hello-pfe-openshift
+  description: OpenShift 上のゴールデンパスから作成した Web サービス
+  annotations:
+    argocd/app-name: hello-pfe-openshift
+    github.com/project-slug: keijijin/hello-pfe-openshift
+spec:
+  type: service
+  lifecycle: experimental
+  owner: group:default/guests
